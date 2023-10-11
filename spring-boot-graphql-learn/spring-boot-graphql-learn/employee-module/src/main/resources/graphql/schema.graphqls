@@ -1,0 +1,31 @@
+type Query {
+    getAll:[Employee]
+    getEmployeeByNo(employeeNo:String):Employee
+}
+
+
+
+type Employee{
+    id: ID!
+    employeeNo:String!
+    employeeName:String!
+}
+
+input EmployeeRequest{
+    employeeNo:String!
+    employeeName:String!
+}
+
+type EmployeeResponse{
+    employeeNo:String!
+    employeeName:String!
+}
+
+
+type Mutation{
+    addEmployee(input: EmployeeRequest):Employee
+    deleteEmployeeByNo(employeeNo:String):String
+    updateEmployee(employeeNo:String, employeeRequest:EmployeeRequest):Employee
+}
+
+

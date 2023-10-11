@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd ">
+
+    <changeSet id="3" author="Akash">
+        <createTable tableName="learning_objective">
+            <column name="learning_objective_id" type="varchar(100)" >
+                <constraints primaryKey="true" nullable="true" />
+            </column>
+            <column name="context_id" type="varchar(100)"  >
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="context_type" type="varchar(100)">
+                <constraints primaryKey="true" nullable="true"  />
+            </column>
+            <column name="context_version" type="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+            <column name="title" type="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,13 @@
+scalar Object
+scalar JSON
+
+type Query{
+    mono: String
+    products: [Product]
+}
+
+
+type Product{
+    name: String
+    attributes: JSON
+}

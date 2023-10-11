@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active:
+      - dev
+  liquibase:
+    enabled: true
+    url: jdbc:postgresql://localhost:5432/graphql
+    user: postgres
+    password: root
+    change-log: classpath:/db/changelog/changelog-master.xml
+  r2dbc:
+    pool:
+      enabled: true
+  graphql:
+    graphiql:
+      enabled: true
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+        - dev
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/graphql
+    username: postgres
+    password: 09Nov2000
+

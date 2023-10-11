@@ -1,0 +1,161 @@
+
+scalar JSON
+scalar UUID
+
+type Query{
+    mono:String
+    getAllStructureContext:[StructureContext]
+    getAllNodes:[StructureNode]
+    getById(structureContextId:String):StructureContextEntityResponse
+    getAllLearningObjective:[LearningObjective]
+    getByIdLearningObjective(learningObjectiveId:String,contextId:String,contextType:String):LearningObjectiveResponse
+    #    getAllTocs:[Toc]
+}
+
+type Mutation{
+    createStructureContext(structureContext:StructureContextEntityRequest):StructureContextEntityResponse
+    createStructureNode(structureNode:StructureNodeRequest):StructureNodeResponse
+    createLearningObjective(learningObjectiveRequest:LearningObjectiveRequest):LearningObjectiveResponse
+    #        createToc(tocRequest:TocRequest):TocResponse
+}
+type LearningObjective{
+    learningObjectiveId:String
+    contextId:String
+    contextType:String
+    contextVersion:String
+    title:String
+}
+input LearningObjectiveRequest{
+    learningObjectiveId:String
+    contextId:String
+    contextType:String
+    contextVersion:String
+    title:String
+}
+type LearningObjectiveResponse{
+    learningObjectiveId:String
+    contextId:String
+    contextType:String
+    contextVersion:String
+    title:String
+
+}
+
+type StructureContext{
+    id:UUID
+    structureContextType:String
+    structureContextId:String!
+    structureContextVersion:String
+    parentTemplateId:String
+    parentTemplateVersion:String
+    productPlatform:String
+    parentContextId:String
+    parentContextVersion:String
+    toc:JSON
+    tags:JSON
+    createdBy:String
+    createdAt:String
+    updatedBy:String
+    updatedAt:String
+
+}
+
+type Toc{
+    contextType:String
+    contextId:String
+    contextVersion:String
+    title:String
+    structureNodes:[StructureNode]
+}
+
+type StructureNode{
+    id:UUID
+    nodeType:String
+    nodeId:String
+    title:String
+    hidden:Boolean
+    structureNodes:[StructureNode]
+
+}
+
+type TocResponse{
+    contextId:String
+    contextType:String
+    contextVersion:String
+    title:String
+    structureNodes:[StructureNodeResponse]
+}
+
+
+input StructureContextEntityRequest{
+    structureContextType:String
+    structureContextId:String!
+    structureContextVersion:String
+    parentTemplateId:String
+    parentTemplateVersion:String
+    productPlatform:String
+    parentContextId:String
+    parentContextVersion:String
+    tocs: TocRequest
+    tags:JSON
+    createdBy:String
+    createdAt:String
+    updatedBy:String
+    updatedAt:String
+}
+input TocRequest{
+    contextType:String
+    contextId:String
+    contextVersion:String
+    title:String
+    structureNodes:[StructureNodeRequest]
+}
+
+type StructureContextEntityResponse{
+    id:UUID
+    structureContextType:String
+    structureContextId:String!
+    structureContextVersion:String
+    parentTemplateId:String
+    parentTemplateVersion:String
+    productPlatform:String
+    parentContextId:String
+    parentContextVersion:String
+    tocs: TocResponse
+    tags:JSON
+    createdBy:String
+    createdAt:String
+    updatedBy:String
+    updatedAt:String
+}
+
+input StructureNodeRequest{
+    id:UUID
+    nodeType:String
+    nodeId:String
+    title:String
+    hidden:Boolean
+    structureNodes:[StructureNodeRequest]
+
+
+
+}
+type StructureNodeResponse{
+    id:UUID
+    nodeType:String
+    nodeId:String
+    title:String
+    hidden:Boolean
+    structureNodes:[StructureNodeResponse]
+
+
+}
+
+#input structureNodes{
+#    id:UUID
+#    nodeType:String
+#    nodeId:String
+#    title:String
+#    hidden:Boolean
+#}
+

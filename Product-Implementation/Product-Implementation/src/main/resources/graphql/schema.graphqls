@@ -1,0 +1,26 @@
+type Query{
+     getAllProductsGraphql:[Product]
+     getByNo(productNo:String):Product
+}
+
+
+type Product{
+    id:ID
+    productNo:String
+    productName:String
+    }
+
+type Mutation{
+    createProduct(product:ProductInput):Product
+   deleteProductByNo(productNo:String):String
+  updateProduct(productNo:String, product:ProductInput):Product
+}
+input ProductInput{
+
+    productNo:String
+    productName:String
+
+}
+
+
+

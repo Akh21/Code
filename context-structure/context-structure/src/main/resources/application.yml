@@ -1,0 +1,53 @@
+spring:
+  profiles:
+    active:
+      - dev
+  liquibase:
+    enabled: true
+    url: jdbc:postgresql://localhost:5432/structureContextDB
+    user: postgres
+    password: postgres@123
+    change-log: classpath:/db/changelog/changelog-master.xml
+  r2dbc:
+    pool:
+      enabled: true
+
+  graphql:
+    graphiql:
+      enabled: true
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+        - dev
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/structureContextDB
+    username: postgres
+    password: root
+
+server:
+  port: 8086
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  r2dbc:
+    host: localhost
+    port: 5432
+    driver: postgresql
+    database: structureContextDB
+    username: postgres
+    password: root
+    pool:
+      initialSize: 10
+      maxSize: 10
+      maxIdleTimeInMinutes: 30
+
+
+
